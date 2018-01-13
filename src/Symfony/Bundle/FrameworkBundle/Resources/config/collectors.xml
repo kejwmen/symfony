@@ -17,6 +17,11 @@
             <tag name="data_collector" template="@WebProfiler/Collector/request.html.twig" id="request" priority="335" />
         </service>
 
+        <service id="data_collector.session" class="Symfony\Component\HttpKernel\DataCollector\SessionDataCollector">
+            <tag name="kernel.event_subscriber" />
+            <tag name="data_collector" template="@WebProfiler/Collector/session.html.twig" id="session" priority="335" />
+        </service>
+
         <service id="data_collector.ajax" class="Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector">
             <tag name="data_collector" template="@WebProfiler/Collector/ajax.html.twig" id="ajax" priority="315" />
         </service>

@@ -60,11 +60,6 @@
                 <b>Route name</b>
                 <span>{{ collector.route|default('NONE') }}</span>
             </div>
-
-            <div class="sf-toolbar-info-piece">
-                <b>Has session</b>
-                <span>{% if collector.sessionmetadata|length %}yes{% else %}no{% endif %}</span>
-            </div>
         </div>
 
         {% if redirect_handler is defined -%}
@@ -211,48 +206,6 @@
                     </div>
                 {% else %}
                     {{ include('@WebProfiler/Profiler/bag.html.twig', { bag: collector.responsecookies }, with_context = true) }}
-                {% endif %}
-            </div>
-        </div>
-
-        <div class="tab {{ collector.sessionmetadata is empty ? 'disabled' }}">
-            <h3 class="tab-title">Session</h3>
-
-            <div class="tab-content">
-                <h3>Session Metadata</h3>
-
-                {% if collector.sessionmetadata is empty %}
-                    <div class="empty">
-                        <p>No session metadata</p>
-                    </div>
-                {% else %}
-                    {{ include('@WebProfiler/Profiler/table.html.twig', { data: collector.sessionmetadata }, with_context = false) }}
-                {% endif %}
-
-                <h3>Session Attributes</h3>
-
-                {% if collector.sessionattributes is empty %}
-                    <div class="empty">
-                        <p>No session attributes</p>
-                    </div>
-                {% else %}
-                    {{ include('@WebProfiler/Profiler/table.html.twig', { data: collector.sessionattributes, labels: ['Attribute', 'Value'] }, with_context = false) }}
-                {% endif %}
-            </div>
-        </div>
-
-        <div class="tab {{ collector.flashes is empty ? 'disabled' }}">
-            <h3 class="tab-title">Flashes</h3>
-
-            <div class="tab-content">
-                <h3>Flashes</h3>
-
-                {% if collector.flashes is empty %}
-                    <div class="empty">
-                        <p>No flash messages were created.</p>
-                    </div>
-                {% else %}
-                    {{ include('@WebProfiler/Profiler/table.html.twig', { data: collector.flashes }, with_context = false) }}
                 {% endif %}
             </div>
         </div>
